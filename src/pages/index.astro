@@ -20,19 +20,33 @@ import DecorativeImage from "@assets/images/pexels-shvetsa-5953523.jpg";
 import reviewAuthors from "@assets/images/review-authors.png";
 import Dessert from "@assets/images/dessert.png";
 import Mussels from "@assets/images/mussels2.png";
+
+import { contentfulClient } from "@libs/contentful";
+import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
+import type { EntryFieldTypes } from "contentful";
+interface HomePage {
+  contentTypeId: "home",
+  fields: {
+    bannerTag: EntryFieldTypes.Text
+    bannerTitle: EntryFieldTypes.Text
+    bannerDescription: EntryFieldTypes.RichText,
+  }
+}
+const entries = await contentfulClient.getEntries<HomePage>({
+  content_type: "home",
+});
+const entry = entries.items[0];
 ---
 
 <Layout title="Home" pageTitle="Home" description="Welcome to our restaurant!">
 	<Section class:list={"bg-white"}>
 		<Hero>
 			<div slot="hero-content-left" class="prose max-w-none max-lg:order-1">
-				<Badge title="il ristorante italiana" />
-				<h1 class="font-black">Real Italian food in a real Italian restaurant...</h1>
+				<Badge title={entry.fields.bannerTag} />
+				<h1 class="font-black">{entry.fields.bannerTitle}</h1>
 
 				<p>
-					Experience the taste of Italy with our authentic dishes made from the finest ingredients. Indulge in
-					our wide variety of pizzas, pastas, and desserts, all crafted with love and tradition. Whether
-					you're dining in or taking out, we promise a memorable culinary experience.
+					{documentToHtmlString(entry.fields.bannerDescription)}
 				</p>
 
 				<span class="text-brand-green font-medium">✔ We also deliver</span>

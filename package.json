@@ -10,18 +10,21 @@
   },
   "dependencies": {
     "@astrojs/alpinejs": "^0.4.1",
-    "@astrojs/mdx": "^4.0.3",
+    "@astrojs/db": "^0.14.5",
+    "@astrojs/mdx": "^4.0.5",
     "@astrojs/tailwind": "^5.1.4",
-    "@playform/inline": "^0.1.0",
+    "@contentful/rich-text-html-renderer": "^17.0.0",
+    "@playform/inline": "^0.1.1",
     "@types/alpinejs": "^3.13.11",
-    "alpinejs": "^3.14.7",
-    "astro": "^5.1.1",
+    "alpinejs": "^3.14.8",
+    "astro": "^5.1.5",
+    "contentful": "^11.4.2",
     "glightbox": "^3.3.0",
     "masonry-layout": "^4.2.2",
-    "swiper": "^11.1.15",
+    "swiper": "^11.2.1",
     "tailwindcss": "^3.4.17"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.15"
+    "@tailwindcss/typography": "^0.5.16"
   }
 }
